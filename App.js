@@ -1,22 +1,29 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
 import Slider from '@react-native-community/slider';
+import { ModalPassword } from './src/components/modal';
 
 
 let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 export default function App() {
   const [size, setSize] = useState(10);  // Variável de estado para o valor do slider
+  const [passwordValue, setPasswordValue] = useState("") //salva a senha no useState - utiliza para mostrar na tela
+  const [modalVisible, setModalVisible] = useState(false)
 
-//gerador do password
-  function generatePassword(){
+
+  //gerador do password
+  function generatePassword() {
+
     let password = "";
-    for(let i = 0, n = charset.length; i <size; i++){
+
+    for (let i = 0, n = charset.length; i < size; i++) {
       password += charset.charAt(Math.floor(Math.random() * n))
     }
-    console.log(password)
+
+    setPasswordValue(password)
+    setModalVisible(true);
+
   }
-
-
 
 
   return (
@@ -37,15 +44,21 @@ export default function App() {
           thumbTintColor="#392de9"
           value={size}  // Define o valor inicial do slider
           onValueChange={(value) => setSize(parseInt(value, 10))}
-          // Atualiza o estado conforme o valor do slider
+        // Atualiza o estado conforme o valor do slider
         />
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={generatePassword}>
         <Text style={styles.buttonText}>GERAR SENHA</Text>
       </TouchableOpacity>
+
+      <Modal visible={modalVisible} animationType="fade" transparent={true}>
+        <ModalPassword password={passwordValue} handleClose={ () => setModalVisible(false)}/>
+      </Modal>
+
+
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
