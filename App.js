@@ -13,7 +13,10 @@ export default function App() {
     for(let i = 0, n = charset.length; i <size; i++){
       password += charset.charAt(Math.floor(Math.random() * n))
     }
+    console.log(password)
   }
+
+
 
 
   return (
