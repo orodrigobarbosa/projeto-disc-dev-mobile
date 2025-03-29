@@ -7,9 +7,12 @@ let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 export default function App() {
   const [size, setSize] = useState(10);  // Variável de estado para o valor do slider
 
-
+//gerador do password
   function generatePassword(){
-    console.log("Clicou")
+    let password = "";
+    for(let i = 0, n = charset.length; i <size; i++){
+      password += charset.charAt(Math.floor(Math.random() * n))
+    }
   }
 
 
