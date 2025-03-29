@@ -2,13 +2,21 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
 
+
+let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 export default function App() {
   const [size, setSize] = useState(10);  // Variável de estado para o valor do slider
+
+
+  function generatePassword(){
+    console.log("Clicou")
+  }
+
 
   return (
     <View style={styles.container}>
       <Image
-        source={require("../src/assets/logo.png")}
+        source={require("./src/assets/logo.png")}
         style={styles.logo}
       />
       <Text style={styles.title}>{size} CARACTERES</Text>
@@ -28,7 +36,7 @@ export default function App() {
       </View>
 
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>10 GERAR SENHA</Text>
+        <Text style={styles.buttonText}>GERAR SENHA</Text>
       </TouchableOpacity>
     </View>
   );
