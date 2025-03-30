@@ -17,11 +17,11 @@ export function ModalPassword({ password, handleClose}) {
                     <TouchableOpacity style={styles.button} onPress={handleClose}>
                         <Text style={styles.buttonText}>Voltar</Text>
                     </TouchableOpacity>
-                </View>
+                
 
-                <View style={styles.buttonArea}>
+                
                     <TouchableOpacity style={[styles.button, styles.buttonSave]}>
-                        <Text style={styles.buttonSaveText}>Salvar senhar</Text>
+                        <Text style={styles.buttonSaveText}>Salvar senha</Text>
                     </TouchableOpacity>
                 </View>
 
